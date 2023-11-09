@@ -3,7 +3,8 @@ import java.io.*;
 
 public class Entrada {
     public static void main(String[] args) {
-        File file = new File("src/almacenamiento/documentos/inicio.txt");
         //Prueba
+        OperacionesCaracteres operacionesCaracteres = new OperacionesCaracteres();
+        operacionesCaracteres.leerFichero(new File("src/almacenamiento/documentos/inicio.txt"));
     }
 }

@@ -1,18 +1,34 @@
 package almacenamiento;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 
 public class OperacionesCaracteres {
     public void leerFichero(File f) {
         //File --> Flujo --> Buffer --> Close
+        FileReader fileReader = null;
+        BufferedReader bufferedReader = null;
         try {
-            FileReader fileReader = new FileReader(f);
+            fileReader = new FileReader(f);
+            bufferedReader = new BufferedReader(fileReader);
+            String linea;
+            /*while ((linea = bufferedReader.readLine())!=null){
+                System.out.println(linea);
+            }*/
+            int caracter;
+            while ((caracter = bufferedReader.read())>-1){
+                System.out.println(caracter);
+            }
+
         } catch (FileNotFoundException e) {
-            System.out.printf("Fichero no encontrado");;
+            System.out.println("Fichero no encontrado");;
+        } catch (IOException e){
+            e.printStackTrace();
+        } finally {
+            try {
+                bufferedReader.close();
+                fileReader.close();
+            } catch (IOException e) {
+                System.out.println("Error al cerrar el fichero");
+            }
         }
-
-
     }
-
 }
